@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 from datetime import datetime
 from tasks import load_tasks, save_tasks, filter_tasks_by_priority, filter_tasks_by_category
+import subprocess
 
 def main():
     st.title("To-Do Application")
@@ -35,6 +36,20 @@ def main():
             tasks.append(new_task)
             save_tasks(tasks)
             st.sidebar.success("Task added successfully!")
+
+    st.sidebar.header("🧪 Run Tests")
+
+    if st.sidebar.button("Run Unit Tests"):
+        st.code(subprocess.getoutput("pytest tests/test_basic.py --cov=tasks --cov-report=term"))
+
+    if st.sidebar.button("Run Parametrized/Fixture Tests"):
+        st.code(subprocess.getoutput("pytest tests/test_advanced.py"))
+
+    if st.sidebar.button("Run TDD Tests"):
+        st.code(subprocess.getoutput("pytest tests/test_tdd.py"))
+
+    if st.sidebar.button("Run Property-Based Tests"):
+        st.code(subprocess.getoutput("pytest tests/test_property.py"))
     
     # Main area to display tasks
     st.header("Your Tasks")

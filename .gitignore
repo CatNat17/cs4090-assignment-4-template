@@ -1,0 +1,6 @@
+.coverage
+tasks.cpython-311.pyc
+test_advanced.cypthon-311-pytest-8.3.5.pyc
+test_basic.cypthon-311-pytest-8.3.5.pyc
+test_property.cypthon-311-pytest-8.3.5.pyc
+test_tdd.cypthon-311-pytest-8.3.5.pyc
